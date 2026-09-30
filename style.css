@@ -1,0 +1,276 @@
+/* ---------- Reset & Base ---------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Playfair Display', 'Georgia', serif;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+body {
+  background-color: #f3f3f3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* ---------- Telas (screens) ---------- */
+
+.gif1 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 30px;
+  margin: 10px 0px 20px 0px;
+}
+
+.screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  visibility: hidden;
+  z-index: 1;
+}
+
+.screen.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 10;
+}
+
+/* ---------- Tipografia ---------- */
+.question {
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  color: #ad2c2c;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  line-height: 1.3;
+}
+
+.subtitle {
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  color: #c21d1d;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+/* ---------- Botões ---------- */
+.buttons {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn {
+  font-family: inherit;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-weight: 700;
+  padding: 0.9rem 2.8rem;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+}
+
+.btn:focus-visible {
+  outline: 3px solid #b80000;
+  outline-offset: 3px;
+}
+
+/* Botão SIM */
+.btn-yes {
+  background-color: #a51f1f;
+  color: #fcfcfc;
+  box-shadow: 1px 1px 6px rgba(168, 27, 27, 0.35);
+}
+
+.btn-yes:hover {
+  transform: scale(1.01);
+  box-shadow: 1px 1px 6px rgba(168, 27, 27, 0.35);
+}
+
+/* Botão NÃO — começa no fluxo normal, centralizado com o SIM */
+.btn-no {
+  background-color: #a51f1f;
+  color: #fcfcfc;
+  box-shadow: 1px 1px 6px rgba(168, 27, 27, 0.35);
+}
+
+/* Quando o botão está "fugindo", ganha position absolute via JS */
+.btn-no.escaping {
+  position: absolute;
+  transition: none;
+}
+
+.btn-no:hover {
+  box-shadow: 1px 1px 6px rgba(168, 27, 27, 0.35);
+}
+
+/* ---------- Coração decorativo ---------- */
+.heart-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  animation: pulse 1.6s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* ---------- Calendário ---------- */
+.calendar-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.calendar {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 1px 1px 6px rgba(87, 87, 87, 0.281);
+  padding: 1.5rem;
+  max-width: 380px;
+  width: 100%;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.calendar-header span {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #000000;
+}
+
+.calendar-nav {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  color: #000000b9;
+  cursor: pointer;
+  padding: 0.3rem 0.6rem;
+  border-radius: 8px;
+}
+
+.calendar-nav:hover {
+  background: #fff0f0;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  text-align: center;
+}
+
+.calendar-grid .day-name {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #000000b7;
+  padding: 0.3rem 0;
+  font-family: 'Inter', sans-serif;
+}
+
+.calendar-grid .day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  color: #8d1212;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  border-radius: 50%;
+}
+
+.calendar-grid .day:hover:not(.disabled):not(.empty) {
+  background: #ffe0e6;
+}
+
+.calendar-grid .day.selected {
+  background-color: #b8000094;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 50%;
+}
+
+.calendar-grid .day.disabled {
+  color: #dddddd;
+  cursor: default;
+}
+
+.calendar-grid .day.empty {
+  cursor: default;
+}
+
+
+/* ---------- Seletor de horário ---------- */
+.time-section {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.time-section label {
+  display: block;
+  font-size: 1rem;
+  color: #af1919;
+  margin-bottom: 0.6rem;
+  font-weight: 600;
+}
+
+.time-input {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  padding: 0.6rem 1.2rem;
+  border: 2px solid #b11f1f;
+  border-radius: 12px;
+  color: #ffffff;
+  background: #b11f1f;
+  text-align: center;
+  outline: none;
+}
+
+.time-input:focus {
+  border-color: #e63946;
+}
+
+.time-input::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.btn-confirm {
+  margin-top: 1.5rem;
+}
+
+/* ---------- Tela final ---------- */
+.final-text {
+  font-size: clamp(1.5rem, 4.5vw, 2.5rem);
+  color: #bd2b2b;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.final-detail {
+  font-size: clamp(1.1rem, 3vw, 1.6rem);
+  color: #ce1d1d;
+  text-align: center;
+  margin-top: 1rem;
+  font-family: 'Inter', sans-serif;
+}
+

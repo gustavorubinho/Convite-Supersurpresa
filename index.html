@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tô com saudades ;P</title>
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="confetti-container" id="confetti-container"></div>
+
+  <!-- ======== TELA 1 — Pergunta ======== -->
+  <section class="screen active" id="screen-question">
+    <span class="gif1" id="icon-question" style="position: fixed; bottom: 8px; left: 140px; z-index: 20;">
+      <img src="img/download (2).gif" alt="" style="width: 140px;">
+    </span>
+    <h1 class="question">Quer sair comigo?</h1>
+
+    <div class="buttons">
+      <button class="btn btn-yes" id="btn-yes">SIM</button>
+      <button class="btn btn-no" id="btn-no">NÃO</button>
+    </div>
+  </section>
+
+  <!-- ======== TELA 2 — Calendário ======== -->
+  <section class="screen" id="screen-calendar">
+    <span id="icon-calendar" style="position: fixed; top: 100px; right: 100px; z-index: 20;">
+      <img src="img/KISSY HEARTS.gif" alt="" style="width: 20px;">
+    </span>
+    <span style="position: fixed; bottom: 10px; left: 10px; z-index: 20;">
+      <img src="img/download (1).gif" alt="" style="width: 60px">
+    </span>
+
+    <h1 class="question">Escolha um dia para nosso encontro</h1>
+    <p class="subtitle">♡</p>
+
+    <div class="calendar-wrapper">
+      <div class="calendar">
+        <div class="calendar-header">
+          <button class="calendar-nav" id="prev-month" aria-label="Mês anterior">‹</button>
+          <span id="calendar-title"></span>
+          <button class="calendar-nav" id="next-month" aria-label="Próximo mês">›</button>
+        </div>
+        <div class="calendar-grid" id="calendar-grid"></div>
+      </div>
+
+      <!-- Seletor de horário (aparece após escolher data) -->
+      <div class="time-section" id="time-section" style="display: none;">
+        <label for="time-input">Que horas?</label>
+        <input type="time" id="time-input" class="time-input" value="19:00" />
+      </div>
+
+      <button class="btn btn-yes btn-confirm" id="btn-confirm" style="display: none;">
+        Confirmar
+      </button>
+    </div>
+  </section>
+
+  <!-- ======== TELA 3 — Confirmação final ======== -->
+  <section class="screen" id="screen-final">
+    <span style="position: fixed; top: 10px; right: 10px; z-index: 20;">
+      <img src="img/starfire and robin.jpg" alt="" style="width: 200px;">
+    </span>
+    <span style="position: fixed; bottom: 10px; left: 10px; z-index: 20;">
+      <img src="img/download (41).jpg" alt="" style="width: 200px;">
+    </span>
+    <span style="position: fixed; bottom: 700px; left: 10px; z-index: 20;">
+      <img src="img/download (3).gif" alt="" style="width: 280px;">
+    </span>
+    <span style="position: fixed; bottom: 8px; left: 900px; z-index: 20;">
+      <img src="img/download (4).gif" alt="" style="width: 40px;">
+    </span>
+    <h1 class="final-text" id="final-text">Encontro marcado!</h1>
+    <p class="subtitle">Te espero lá Final Girl</p>
+    <p class="final-detail" id="final-detail"></p>
+    <a class="btn btn-yes btn-whatsapp" id="btn-whatsapp" href="#" target="_blank" style="margin-top: 2rem; text-decoration: none; display: inline-block;">
+      Sabia que você ia aceitar (clique aqui)
+    </a>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
